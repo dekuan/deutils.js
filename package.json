@@ -1,0 +1,31 @@
+{
+	"name": "deutils.js",
+	"description": "Utils in Node.js by DeKuan, Inc.",
+	"version": "0.0.3",
+	"author": "XING <dev@dekuan.org>",
+	"contributors": [
+		{
+			"name": "XING",
+			"email": "dev@dekuan.org"
+		}
+	],
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:dekuan/deutils.js.git"
+	},
+	"keywords": [
+		"deutils.js"
+	],
+	"dependencies": {
+		"assert": "^1.4.1",
+		"mocha": "^5.2.0",
+		"msgpack": ">= 0.0.0"
+	},
+	"main": "index.js",
+	"scripts": {
+		"test": "expresso -I lib test/*"
+	},
+	"engines": {
+		"node": "0.4.x || 0.5.x || 0.6.x || 0.7.x || 0.8.x || 0.9.x"
+	}
+}

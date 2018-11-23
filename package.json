@@ -1,7 +1,7 @@
 {
 	"name": "deutils.js",
 	"description": "Utils in Node.js by DeKuan, Inc.",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"author": "XING <dev@dekuan.org>",
 	"contributors": [
 		{

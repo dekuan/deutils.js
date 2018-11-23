@@ -1,7 +1,7 @@
 {
 	"name": "deutils.js",
 	"description": "Utils in Node.js by DeKuan, Inc.",
-	"version": "0.0.3",
+	"version": "1.0.1",
 	"author": "XING <dev@dekuan.org>",
 	"contributors": [
 		{
@@ -23,7 +23,6 @@
 	},
 	"main": "index.js",
 	"scripts": {
-		"test": "expresso -I lib test/*"
 	},
 	"engines": {
 		"node": "0.4.x || 0.5.x || 0.6.x || 0.7.x || 0.8.x || 0.9.x"

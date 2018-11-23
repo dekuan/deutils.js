@@ -1,7 +1,5 @@
-const DeUtilsCore	= require( './src/deutils.core.js' );
-const DeUtilsNetwork	= require( './src/deutils.network.js' );
-
-
+const { DeUtilsCore }		= require( './src/deutils.core.js' );
+const { DeUtilsNetwork }	= require( './src/deutils.network.js' );
 
 
 

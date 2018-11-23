@@ -2,7 +2,7 @@ const _child_process	= require( 'child_process' );
 const _dns		= require( 'dns' );
 
 const { IpRegEx }	= require( './libs/ip.regex.js' );
-const { DeUtilsCore }	= require( './deutils.core' );
+const { DeUtilsCore }	= require( './deutils.core.js' );
 
 
 

@@ -18,15 +18,15 @@ class DeUtilsNetwork
 
 	/**
 	 *	check if the given number is a valid socket listen port number
-	 *	@public
-	 *	@param nPort
-	 *	@returns {boolean}
+	 *
+	 *	@param	{}		vPort
+	 *	@return	{boolean}
 	 */
-	static isValidPort( nPort )
+	static isValidPort( vPort )
 	{
-		return ( Number.isInteger( nPort ) &&
-			Number.isSafeInteger( nPort ) &&
-			nPort > 0 && nPort <= 65535 );
+		vPort	= parseInt( vPort );
+		return ( DeUtilsCore.isNumeric( vPort ) &&
+			vPort > 0 && vPort <= 65535 );
 	}
 
 	/**

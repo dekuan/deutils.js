@@ -9,7 +9,11 @@ describe( 'DeUtilsNetwork.test', () =>
 	{
 		assert.equal( true, DeUtilsNetwork.isValidPort( 1 ) );
 		assert.equal( true, DeUtilsNetwork.isValidPort( 65535 ) );
+		assert.equal( true, DeUtilsNetwork.isValidPort( '50000' ) );
+		assert.equal( true, DeUtilsNetwork.isValidPort( '50001' ) );
+		assert.equal( true, DeUtilsNetwork.isValidPort( '65535' ) );
 		assert.equal( false, DeUtilsNetwork.isValidPort( 65536 ) );
+		assert.equal( false, DeUtilsNetwork.isValidPort( '65536' ) );
 		assert.equal( false, DeUtilsNetwork.isValidPort( '11111112323' ) );
 		assert.equal( false, DeUtilsNetwork.isValidPort( 'xxx' ) );
 	});

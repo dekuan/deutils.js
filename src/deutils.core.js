@@ -14,7 +14,7 @@ class DeUtilsCore
 	 */
 	static isNumeric( vValue )
 	{
-		return Boolean( 'number' === typeof vValue );
+		return Boolean( ! isNaN( NaN ) && 'number' === typeof vValue );
 	}
 
 	static isString( vValue )

@@ -124,18 +124,6 @@ class DeUtilsTime
 		let oDate = new Date( `${ sEnUsDate } UTC` );
 		return this.isValidDate( oDate ) ? oDate.getTime() : 0;
 	}
-
-	/**
-	 * 	get random number with a range
-	 *
-	 *	@param	{number}	nMin
-	 *	@param	{number}	nMax
-	 *	@return {number}
-	 */
-	static getRandom( nMin, nMax )
-	{
-		return Math.random() * ( nMax - nMin ) + nMin;
-	}
 }
 
 

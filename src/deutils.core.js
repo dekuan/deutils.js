@@ -14,7 +14,7 @@ class DeUtilsCore
 	 */
 	static isNumeric( vValue )
 	{
-		return Boolean( ! isNaN( NaN ) && 'number' === typeof vValue );
+		return Boolean( ! isNaN( vValue ) && 'number' === typeof vValue );
 	}
 
 	static isString( vValue )
@@ -138,6 +138,16 @@ class DeUtilsCore
 		return Array.from( setRet );
 	}
 
+	/**
+	 *	check if the sMobile is a valid china cell phone number
+	 *
+	 *	@param	{string}	sMobile
+	 *	@return {boolean|*}
+	 */
+	static isValidChinaMobile( sMobile )
+	{
+		return ( this.isNumeric( sMobile ) || this.isExistingString( sMobile ) ) && /^1[3456789]\d{9}$/.test( sMobile );
+	}
 }
 
 

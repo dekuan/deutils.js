@@ -64,4 +64,11 @@ describe( 'DeUtilsCore.test', () =>
 		assert.equal( true, DeUtilsCore.isPlainObjectWithKeys( {} ) );
 		assert.equal( true, DeUtilsCore.isPlainObjectWithKeys( { 'k' : 1 }, 'k' ) );
 	});
+
+	it( 'isValidChinaMobile', () =>
+	{
+		assert.equal( true, DeUtilsCore.isValidChinaMobile( '18811009090' ) );
+		assert.equal( false, DeUtilsCore.isValidChinaMobile( '28811009090' ) );
+		assert.equal( false, DeUtilsCore.isValidChinaMobile( '12811009090' ) );
+	});
 });

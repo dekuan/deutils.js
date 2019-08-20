@@ -54,10 +54,4 @@ describe( 'DeUtilsTime.test', () =>
 		assert.equal( 0, DeUtilsTime.getUTCTimeByEnUsDate( "" ) );
 		assert.equal( 0, DeUtilsTime.getUTCTimeByEnUsDate( null ) );
 	});
-
-	it( 'getRandom', () =>
-	{
-		assert.equal( true, DeUtilsTime.getRandom( 1000, 2000 ) < 2000 );
-		assert.equal( true, DeUtilsTime.getRandom( 1000, 2000 ) > 1000 );
-	});
 });

@@ -1,6 +1,6 @@
 {
 	"name": "deutils.js",
-	"version": "1.0.12",
+	"version": "1.0.13",
 	"description": "Utils in Node.js by DeKuan, Inc.",
 	"author": "XING <dev@dekuan.org>",
 	"main": "index.js",

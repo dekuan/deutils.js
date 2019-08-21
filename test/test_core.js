@@ -65,10 +65,10 @@ describe( 'DeUtilsCore.test', () =>
 		assert.equal( true, DeUtilsCore.isPlainObjectWithKeys( { 'k' : 1 }, 'k' ) );
 	});
 
-	it( 'isValidChinaMobile', () =>
+	it( 'isValidChinaPhoneNumber', () =>
 	{
-		assert.equal( true, DeUtilsCore.isValidChinaMobile( '18811009090' ) );
-		assert.equal( false, DeUtilsCore.isValidChinaMobile( '28811009090' ) );
-		assert.equal( false, DeUtilsCore.isValidChinaMobile( '12811009090' ) );
+		assert.equal( true, DeUtilsCore.isValidChinaPhoneNumber( '18811009090' ) );
+		assert.equal( false, DeUtilsCore.isValidChinaPhoneNumber( '28811009090' ) );
+		assert.equal( false, DeUtilsCore.isValidChinaPhoneNumber( '12811009090' ) );
 	});
 });

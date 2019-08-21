@@ -139,14 +139,14 @@ class DeUtilsCore
 	}
 
 	/**
-	 *	check if the sMobile is a valid china cell phone number
+	 *	check if the sPhoneNumber is a valid china cell phone number
 	 *
-	 *	@param	{string}	sMobile
+	 *	@param	{string}	sPhoneNumber
 	 *	@return {boolean|*}
 	 */
-	static isValidChinaMobile( sMobile )
+	static isValidChinaPhoneNumber( sPhoneNumber )
 	{
-		return ( this.isNumeric( sMobile ) || this.isExistingString( sMobile ) ) && /^1[3456789]\d{9}$/.test( sMobile );
+		return ( this.isNumeric( sPhoneNumber ) || this.isExistingString( sPhoneNumber ) ) && /^1[3456789]\d{9}$/.test( sPhoneNumber );
 	}
 }
 

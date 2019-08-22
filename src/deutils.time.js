@@ -109,6 +109,22 @@ class DeUtilsTime
 
 
 	/**
+	 *	get utc date object by enus date string
+	 *
+	 *	@param	{}		sEnUsDate	"Agu 10, 2018"
+	 *	@return	{Date}
+	 */
+	static getUTCDateObjectByEnUsDate( sEnUsDate )
+	{
+		if ( ! DeUtilsCore.isExistingString( sEnUsDate ) )
+		{
+			return null;
+		}
+
+		return new Date( `${ sEnUsDate } UTC` );
+	}
+
+	/**
 	 *	get utc time by enus date string
 	 *
 	 *	@param	{}		sEnUsDate	"Agu 10, 2018"
@@ -116,12 +132,7 @@ class DeUtilsTime
 	 */
 	static getUTCTimeByEnUsDate( sEnUsDate )
 	{
-		if ( ! DeUtilsCore.isExistingString( sEnUsDate ) )
-		{
-			return 0;
-		}
-
-		let oDate = new Date( `${ sEnUsDate } UTC` );
+		let oDate = this.getUTCDateObjectByEnUsDate( sEnUsDate );
 		return this.isValidDate( oDate ) ? oDate.getTime() : 0;
 	}
 }

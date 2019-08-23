@@ -148,6 +148,17 @@ class DeUtilsCore
 	{
 		return ( this.isNumeric( sPhoneNumber ) || this.isExistingString( sPhoneNumber ) ) && /^1[3456789]\d{9}$/.test( sPhoneNumber );
 	}
+
+	/**
+	 *	get the length in bytes of a string
+	 *
+	 *	@param	{string}	sString
+	 *	@return {Number}
+	 */
+	static getByteLength( sString )
+	{
+		return Buffer.byteLength( String( sString ), 'utf8' );
+	}
 }
 
 

@@ -28,7 +28,7 @@ class DeUtilsTime
 	 *	@param	{string}	sDateYmd
 	 *	@return {Date}
 	 */
-	static getDateBy8digit( sDateYmd )
+	static getUTCDateBy8digit( sDateYmd )
 	{
 		if ( ! DeUtilsCore.isExistingString( sDateYmd ) || sDateYmd.length < 6 )
 		{
@@ -57,7 +57,7 @@ class DeUtilsTime
 		return Boolean
 		(
 			DeUtilsCore.isExistingString( sDateYmd ) && 8 === sDateYmd.length &&
-			sDateYmd === this.get8digitDate( this.getDateBy8digit( sDateYmd ) )
+			sDateYmd === this.get8digitDate( this.getUTCDateBy8digit( sDateYmd ) )
 		);
 	}
 

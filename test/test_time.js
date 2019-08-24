@@ -13,16 +13,16 @@ describe( 'DeUtilsTime.test', () =>
 		assert.equal( false, DeUtilsTime.isValidDate( "" ) );
 	});
 
-	it( 'getDateBy8digit', () =>
+	it( 'getUTCDateBy8digit', () =>
 	{
-		let oDate	= DeUtilsTime.getDateBy8digit( '20190901' );
+		let oDate	= DeUtilsTime.getUTCDateBy8digit( '20190901' );
 
 		assert.equal( 2019, oDate.getFullYear() );
 		assert.equal( 8, oDate.getMonth() );
 		assert.equal( 1, oDate.getDate() );
 
 		//	...
-		assert.equal( null, DeUtilsTime.getDateBy8digit( '' ) );
+		assert.equal( null, DeUtilsTime.getUTCDateBy8digit( '' ) );
 	});
 
 	it( 'isValid8digit', () =>

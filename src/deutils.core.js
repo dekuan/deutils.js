@@ -14,7 +14,7 @@ class DeUtilsCore
 	 */
 	static isNumeric( vValue )
 	{
-		return Boolean( ! isNaN( NaN ) && 'number' === typeof vValue );
+		return Boolean( ! isNaN( vValue ) && 'number' === typeof vValue );
 	}
 
 	static isString( vValue )
@@ -138,6 +138,27 @@ class DeUtilsCore
 		return Array.from( setRet );
 	}
 
+	/**
+	 *	check if the sPhoneNumber is a valid china cell phone number
+	 *
+	 *	@param	{string}	sPhoneNumber
+	 *	@return {boolean|*}
+	 */
+	static isValidChinaPhoneNumber( sPhoneNumber )
+	{
+		return ( this.isNumeric( sPhoneNumber ) || this.isExistingString( sPhoneNumber ) ) && /^1[3456789]\d{9}$/.test( sPhoneNumber );
+	}
+
+	/**
+	 *	get the length in bytes of a string
+	 *
+	 *	@param	{string}	sString
+	 *	@return {Number}
+	 */
+	static getByteLength( sString )
+	{
+		return Buffer.byteLength( String( sString ), 'utf8' );
+	}
 }
 
 

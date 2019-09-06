@@ -22,13 +22,49 @@ class DeUtilsTime
 		return Boolean( oDate && "[object Date]" === Object.prototype.toString.call( oDate ) && ! isNaN( oDate ) );
 	}
 
+
+	/**
+	 *	get power week day
+	 *
+	 *	@param	{number}	nWeekDay	- 0~6
+	 *	@return {number|null}
+	 * 		nWeekDay	- 0, 1, 2, 3, 4, 5, 6
+	 *		success		- 1, 2, 4, 8, 16, 32, 64
+	 *		failed		- null
+	 */
+	static getPowerWeekDay( nWeekDay )
+	{
+		if ( ! Number.isInteger( nWeekDay ) || nWeekDay < 0 || nWeekDay > 6 )
+		{
+			return null;
+		}
+
+		return Math.pow( 2, nWeekDay );
+	}
+
+	/**
+	 *	check if the nPower is valid
+	 *
+	 *	@param	{number}	nPower
+	 *	@return {boolean}
+	 */
+	static isValidPowerWeekDay( nPower )
+	{
+		return Number.isInteger( nPower ) &&
+			nPower > 0 &&
+			nPower <= 127 &&
+			127 === ( 127 | nPower )
+		;
+	}
+
+
 	/**
 	 * 	get date by yyyymmdd "20190901"
 	 *
 	 *	@param	{string}	sDateYmd
 	 *	@return {Date}
 	 */
-	static getDateBy8digit( sDateYmd )
+	static getUTCDateBy8digit( sDateYmd )
 	{
 		if ( ! DeUtilsCore.isExistingString( sDateYmd ) || sDateYmd.length < 6 )
 		{
@@ -57,7 +93,7 @@ class DeUtilsTime
 		return Boolean
 		(
 			DeUtilsCore.isExistingString( sDateYmd ) && 8 === sDateYmd.length &&
-			sDateYmd === this.get8digitDate( this.getDateBy8digit( sDateYmd ) )
+			sDateYmd === this.get8digitDate( this.getUTCDateBy8digit( sDateYmd ) )
 		);
 	}
 
@@ -109,6 +145,22 @@ class DeUtilsTime
 
 
 	/**
+	 *	get utc date object by enus date string
+	 *
+	 *	@param	{}		sEnUsDate	"Agu 10, 2018"
+	 *	@return	{Date}
+	 */
+	static getUTCDateObjectByEnUsDate( sEnUsDate )
+	{
+		if ( ! DeUtilsCore.isExistingString( sEnUsDate ) )
+		{
+			return null;
+		}
+
+		return new Date( `${ sEnUsDate } UTC` );
+	}
+
+	/**
 	 *	get utc time by enus date string
 	 *
 	 *	@param	{}		sEnUsDate	"Agu 10, 2018"
@@ -116,25 +168,8 @@ class DeUtilsTime
 	 */
 	static getUTCTimeByEnUsDate( sEnUsDate )
 	{
-		if ( ! DeUtilsCore.isExistingString( sEnUsDate ) )
-		{
-			return 0;
-		}
-
-		let oDate = new Date( `${ sEnUsDate } UTC` );
+		let oDate = this.getUTCDateObjectByEnUsDate( sEnUsDate );
 		return this.isValidDate( oDate ) ? oDate.getTime() : 0;
-	}
-
-	/**
-	 * 	get random number with a range
-	 *
-	 *	@param	{number}	nMin
-	 *	@param	{number}	nMax
-	 *	@return {number}
-	 */
-	static getRandom( nMin, nMax )
-	{
-		return Math.random() * ( nMax - nMin ) + nMin;
 	}
 }
 

@@ -22,6 +22,42 @@ class DeUtilsTime
 		return Boolean( oDate && "[object Date]" === Object.prototype.toString.call( oDate ) && ! isNaN( oDate ) );
 	}
 
+
+	/**
+	 *	get power week day
+	 *
+	 *	@param	{number}	nWeekDay	- 0~6
+	 *	@return {number|null}
+	 * 		nWeekDay	- 0, 1, 2, 3, 4, 5, 6
+	 *		success		- 1, 2, 4, 8, 16, 32, 64
+	 *		failed		- null
+	 */
+	static getPowerWeekDay( nWeekDay )
+	{
+		if ( ! Number.isInteger( nWeekDay ) || nWeekDay < 0 || nWeekDay > 6 )
+		{
+			return null;
+		}
+
+		return Math.pow( 2, nWeekDay );
+	}
+
+	/**
+	 *	check if the nPower is valid
+	 *
+	 *	@param	{number}	nPower
+	 *	@return {boolean}
+	 */
+	static isValidPowerWeekDay( nPower )
+	{
+		return Number.isInteger( nPower ) &&
+			nPower > 0 &&
+			nPower <= 127 &&
+			127 === ( 127 | nPower )
+		;
+	}
+
+
 	/**
 	 * 	get date by yyyymmdd "20190901"
 	 *

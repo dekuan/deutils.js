@@ -72,7 +72,7 @@ class DeUtilsCluster
 	 *	@param	{object}	oWorkerMessage.message
 	 *	@return	{Promise<object>}
 	 */
-	handleWorkersMessage( arrWorkers, oWorkerMessage )
+	static handleWorkersMessage( arrWorkers, oWorkerMessage )
 	{
 		return new Promise( async ( pfnR, pfnReject ) =>
 		{
@@ -93,7 +93,7 @@ class DeUtilsCluster
 				//
 				//	find who sent this message
 				//
-				let oSender = this.findWorkerByPId( arrWorkers, oWorkerMessage.pid );
+				let oSender = DeUtilsCluster.findWorkerByPId( arrWorkers, oWorkerMessage.pid );
 				pfnR({
 					sender	: oSender,
 					message	: oWorkerMessage,
@@ -114,7 +114,7 @@ class DeUtilsCluster
 	 *	@param	{number}	nPId
 	 *	@return {*}
 	 */
-	findWorkerByPId( arrWorkers, nPId )
+	static findWorkerByPId( arrWorkers, nPId )
 	{
 		if ( ! Array.isArray( arrWorkers ) || 0 === arrWorkers.length )
 		{

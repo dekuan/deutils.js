@@ -72,6 +72,52 @@ describe( 'DeUtilsTime.test', () =>
 		assert.equal( false, DeUtilsTime.isValid8digit( true ) );
 	});
 
+
+	it( 'isValidTime', () =>
+	{
+		assert.equal( true, DeUtilsTime.isValidTime( '22:22' ) );
+		assert.equal( true, DeUtilsTime.isValidTime( '23:59' ) );
+		assert.equal( true, DeUtilsTime.isValidTime( '00:00' ) );
+		assert.equal( false, DeUtilsTime.isValidTime( '24:00' ) );
+		assert.equal( false, DeUtilsTime.isValidTime( '22:88' ) );
+		assert.equal( true, DeUtilsTime.isValidTime( '22:22:00' ) );
+		assert.equal( true, DeUtilsTime.isValidTime( '23:59:00' ) );
+		assert.equal( true, DeUtilsTime.isValidTime( '00:00:55' ) );
+		assert.equal( false, DeUtilsTime.isValidTime( '24:00:00' ) );
+		assert.equal( false, DeUtilsTime.isValidTime( '22:88:00' ) );
+		assert.equal( false, DeUtilsTime.isValidTime( '' ) );
+		assert.equal( false, DeUtilsTime.isValidTime( null ) );
+		assert.equal( false, DeUtilsTime.isValidTime( false ) );
+		assert.equal( false, DeUtilsTime.isValidTime( true ) );
+	});
+
+	it( 'isValidTimeHHMM', () =>
+	{
+		assert.equal( true, DeUtilsTime.isValidTimeHHMM( '22:22' ) );
+		assert.equal( true, DeUtilsTime.isValidTimeHHMM( '23:59' ) );
+		assert.equal( true, DeUtilsTime.isValidTimeHHMM( '00:00' ) );
+		assert.equal( false, DeUtilsTime.isValidTimeHHMM( '24:00' ) );
+		assert.equal( false, DeUtilsTime.isValidTimeHHMM( '22:88' ) );
+		assert.equal( false, DeUtilsTime.isValidTimeHHMM( '' ) );
+		assert.equal( false, DeUtilsTime.isValidTimeHHMM( null ) );
+		assert.equal( false, DeUtilsTime.isValidTimeHHMM( false ) );
+		assert.equal( false, DeUtilsTime.isValidTimeHHMM( true ) );
+	});
+
+	it( 'isValidTimeHHMMSS', () =>
+	{
+		assert.equal( true, DeUtilsTime.isValidTimeHHMMSS( '22:22:00' ) );
+		assert.equal( true, DeUtilsTime.isValidTimeHHMMSS( '23:59:00' ) );
+		assert.equal( true, DeUtilsTime.isValidTimeHHMMSS( '00:00:55' ) );
+		assert.equal( false, DeUtilsTime.isValidTimeHHMMSS( '24:00:00' ) );
+		assert.equal( false, DeUtilsTime.isValidTimeHHMMSS( '22:88:00' ) );
+		assert.equal( false, DeUtilsTime.isValidTimeHHMMSS( '' ) );
+		assert.equal( false, DeUtilsTime.isValidTimeHHMMSS( null ) );
+		assert.equal( false, DeUtilsTime.isValidTimeHHMMSS( false ) );
+		assert.equal( false, DeUtilsTime.isValidTimeHHMMSS( true ) );
+	});
+
+
 	it( 'get8digitDate', () =>
 	{
 		assert.equal( '20190810', DeUtilsTime.get8digitDate( new Date( "Aug 10, 2019 UTC" ) ) );

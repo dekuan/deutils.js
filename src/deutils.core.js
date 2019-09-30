@@ -139,6 +139,47 @@ class DeUtilsCore
 	}
 
 	/**
+	 *	check if the sEMail is a valid email address
+	 *
+	 *	@param	{string}	sEMail
+	 *	@return {boolean|*}
+	 */
+	static isValidEMail( sEMail )
+	{
+		if ( ! this.isExistingString( sEMail ) )
+		{
+			return false;
+		}
+		if ( sEMail.length > 254 )
+		{
+			return false;
+		}
+
+		//	...
+		const oRegExp	= /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
+		if ( ! oRegExp.test( sEMail ) )
+		{
+			return false;
+		}
+
+		//	Further checking of some things regex can't handle
+		const arrParts	= sEMail.split( "@" );
+		if ( arrParts[ 0 ].length > 64 )
+		{
+			return false;
+		}
+
+		const arrDomainParts = arrParts[ 1 ].split( "." );
+		if ( arrDomainParts.some( ( sPart ) => sPart.length > 63 ) )
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+
+	/**
 	 *	check if the sPhoneNumber is a valid china cell phone number
 	 *
 	 *	@param	{string}	sPhoneNumber

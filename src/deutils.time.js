@@ -99,6 +99,44 @@ class DeUtilsTime
 
 
 	/**
+	 *	check the sTime is a valid HHMM OR HHMMSS
+	 *
+	 *	@param	{string}	sTime
+	 *	@return	{boolean}
+	 */
+	static isValidTime( sTime )
+	{
+		return this.isValidTimeHHMM( sTime ) || this.isValidTimeHHMMSS( sTime );
+	}
+
+
+	/**
+	 *	check the sTime is a valid HHMM
+	 *
+	 *	@param	{string}	sTime
+	 *	@return	{boolean}
+	 */
+	static isValidTimeHHMM( sTime )
+	{
+		return DeUtilsCore.isExistingString( sTime ) &&
+			/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/.test( sTime );
+	}
+
+
+	/**
+	 *	check the sTime is a valid HHMMSS
+	 *
+	 *	@param	{string}	sTime
+	 *	@return	{boolean}
+	 */
+	static isValidTimeHHMMSS( sTime )
+	{
+		return DeUtilsCore.isExistingString( sTime ) &&
+			/^([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/.test( sTime );
+	}
+
+
+	/**
 	 *	get 8-digit date
 	 *
 	 *	@param	{object}	oDate		- Date object

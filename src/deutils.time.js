@@ -99,6 +99,40 @@ class DeUtilsTime
 
 
 	/**
+	 *	check if the sISODate is a valid ISO date string
+	 *
+	 *	@param	{}	sISODate	- "yyyy-mm-dd"
+	 *	@return {boolean}
+	 */
+	static isValidISODate( sISODate )
+	{
+		if ( ! DeUtilsCore.isExistingString( sISODate ) )
+		{
+			return false;
+		}
+
+		let bRet	= false;
+		let arrParts	= sISODate.split( `-` );
+		let oDataObj	= new Date( `${ sISODate } UTC` );
+
+		if ( this.isValidDate( oDataObj ) && 3 === arrParts.length )
+		{
+			let nYear	= parseInt( arrParts[ 0 ] );
+			let nMonth	= parseInt( arrParts[ 1 ] );
+			let nDay	= parseInt( arrParts[ 2 ] );
+			if ( nYear === oDataObj.getFullYear() &&
+				nMonth === ( oDataObj.getMonth() + 1 ) &&
+				nDay === oDataObj.getDate() )
+			{
+				bRet = true;
+			}
+		}
+
+		return bRet;
+	}
+
+
+	/**
 	 *	check the sTime is a valid HHMM OR HHMMSS
 	 *
 	 *	@param	{string}	sTime

@@ -72,6 +72,17 @@ describe( 'DeUtilsTime.test', () =>
 		assert.equal( false, DeUtilsTime.isValid8digit( true ) );
 	});
 
+	it( 'isValidISODate', () =>
+	{
+		assert.equal( true, DeUtilsTime.isValidISODate( '2019-09-01' ) );
+		assert.equal( true, DeUtilsTime.isValidISODate( '2019-9-1' ) );
+		assert.equal( false, DeUtilsTime.isValidISODate( '20190903' ) );
+		assert.equal( false, DeUtilsTime.isValidISODate( '2019090' ) );
+		assert.equal( false, DeUtilsTime.isValidISODate( '' ) );
+		assert.equal( false, DeUtilsTime.isValidISODate( null ) );
+		assert.equal( false, DeUtilsTime.isValidISODate( false ) );
+		assert.equal( false, DeUtilsTime.isValidISODate( true ) );
+	});
 
 	it( 'isValidTime', () =>
 	{

@@ -171,7 +171,7 @@ class DeUtilsTime
 
 
 	/**
-	 *	get 8-digit date
+	 *	get local 8-digit date
 	 *
 	 *	@param	{object}	oDate		- Date object
 	 *	@return	{string}
@@ -183,10 +183,10 @@ class DeUtilsTime
 			return '';
 		}
 
-		let oLocDate	= new Date( oDate.getTime() );
-		let sFullYear	= oLocDate.getFullYear().toString();
-		let sFullMonth	= String( oLocDate.getMonth() + 1 ).padStart( 2, "0" );
-		let sFullDay	= oLocDate.getDate().toString().padStart( 2, "0" );
+		//	...
+		let sFullYear	= oDate.getFullYear().toString();
+		let sFullMonth	= String( oDate.getMonth() + 1 ).padStart( 2, "0" );
+		let sFullDay	= oDate.getDate().toString().padStart( 2, "0" );
 
 		//	...
 		return `${ sFullYear }${ sFullMonth }${ sFullDay }`;
@@ -194,7 +194,29 @@ class DeUtilsTime
 
 
 	/**
-	 *	get short date
+	 *	get ISO/UTC date string
+	 *
+	 *	@param	{object}	oDate	- Date object
+	 *	@return	{string}
+	 */
+	static getISODateString( oDate )
+	{
+		if ( ! this.isValidDate( oDate ) )
+		{
+			return '';
+		}
+
+		//	...
+		let sFullYear	= oDate.getUTCFullYear().toString();
+		let sFullMonth	= String( oDate.getUTCMonth() + 1 ).padStart( 2, "0" );
+		let sFullDay	= oDate.getUTCDate().toString().padStart( 2, "0" );
+
+		return `${ sFullYear }-${ sFullMonth }-${ sFullDay }`;
+	}
+
+
+	/**
+	 *	get UTC short date
 	 *
 	 *	@param	{object}	oDate		- Date object
 	 *	@return	{string}

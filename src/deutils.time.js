@@ -12,18 +12,6 @@ class DeUtilsTime
 	}
 
 	/**
-	 * 	check if oDate is a valid Date object
-	 *
-	 *	@param	{}		oDate
-	 *	@return	{boolean}
-	 */
-	static isValidDate( oDate )
-	{
-		return Boolean( oDate && "[object Date]" === Object.prototype.toString.call( oDate ) && ! isNaN( oDate ) );
-	}
-
-
-	/**
 	 *	get power week day
 	 *
 	 *	@param	{number}	nWeekDay	- 0~6
@@ -54,9 +42,19 @@ class DeUtilsTime
 			nPower > 0 &&
 			nPower <= 127 &&
 			127 === ( 127 | nPower )
-		;
+			;
 	}
 
+	/**
+	 * 	check if oDate is a valid Date object
+	 *
+	 *	@param	{}		oDate
+	 *	@return	{boolean}
+	 */
+	static isValidDate( oDate )
+	{
+		return Boolean( oDate && "[object Date]" === Object.prototype.toString.call( oDate ) && ! isNaN( oDate ) );
+	}
 
 	/**
 	 * 	get date by yyyymmdd "20190901"
@@ -265,6 +263,49 @@ class DeUtilsTime
 		let oDate = this.getUTCDateObjectByEnUsDate( sEnUsDate );
 		return this.isValidDate( oDate ) ? oDate.getTime() : 0;
 	}
+
+	/**
+	 * 	get utc time by database record
+	 *	@param	{}	vRecord
+	 *	@return	{number}
+	 */
+	static getUTCDateObjectByDatabaseRecord( vRecord )
+	{
+		let oNewDate = null;
+
+		if ( this.isValidDate( vRecord ) )
+		{
+			oNewDate = new Date( vRecord.getTime() );
+		}
+		else if ( DeUtilsCore.isExistingString( vRecord ) )
+		{
+			vRecord = new Date( `${ vRecord } UTC` );
+			if ( this.isValidDate( vRecord ) )
+			{
+				oNewDate = new Date( vRecord.getTime() );
+			}
+		}
+
+		return oNewDate;
+	}
+
+	/**
+	 * 	get utc time by database record
+	 *	@param	{}	vRecord
+	 *	@return	{number}
+	 */
+	static getUTCTimeByDatabaseRecord( vRecord )
+	{
+		let nTime	= 0;
+		let oDate	= this.getUTCDateObjectByDatabaseRecord( vRecord );
+		if ( this.isValidDate( oDate ) )
+		{
+			nTime = oDate.getTime();
+		}
+
+		return nTime;
+	}
+
 }
 
 

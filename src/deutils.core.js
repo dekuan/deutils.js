@@ -71,10 +71,21 @@ class DeUtilsCore
 			bRet	= true;
 			for ( sKey of vKeys )
 			{
-				if ( ! vValue.hasOwnProperty( sKey ) )
+				if ( 'function' === typeof vValue.hasOwnProperty )
 				{
-					bRet	= false;
-					break;
+					if ( ! vValue.hasOwnProperty( sKey ) )
+					{
+						bRet	= false;
+						break;
+					}
+				}
+				else
+				{
+					if ( undefined === vValue[ sKey ] )
+					{
+						bRet	= false;
+						break;
+					}
 				}
 			}
 		}

@@ -266,8 +266,9 @@ class DeUtilsTime
 
 	/**
 	 * 	get utc time by database record
+	 *
 	 *	@param	{}	vRecord
-	 *	@return	{number}
+	 *	@return	{Date}
 	 */
 	static getUTCDateObjectByDatabaseRecord( vRecord )
 	{

@@ -148,4 +148,30 @@ describe( 'DeUtilsTime.test', () =>
 		assert.equal( 0, DeUtilsTime.getUTCTimeByEnUsDate( "" ) );
 		assert.equal( 0, DeUtilsTime.getUTCTimeByEnUsDate( null ) );
 	});
+
+	it( 'getUTCDateObjectByDatabaseRecord', () =>
+	{
+		let vRecord	= new Date();
+		let sRecord	= DeUtilsTime.getISODateString( vRecord );
+
+		assert.equal( true, DeUtilsTime.isValidDate( DeUtilsTime.getUTCDateObjectByDatabaseRecord( vRecord ) ) );
+		assert.equal( true, DeUtilsTime.isValidDate( DeUtilsTime.getUTCDateObjectByDatabaseRecord( sRecord ) ) );
+		assert.equal( false, DeUtilsTime.isValidDate( DeUtilsTime.getUTCDateObjectByDatabaseRecord( `` ) ) );
+		assert.equal( false, DeUtilsTime.isValidDate( DeUtilsTime.getUTCDateObjectByDatabaseRecord( `ssss` ) ) );
+		assert.equal( false, DeUtilsTime.isValidDate( DeUtilsTime.getUTCDateObjectByDatabaseRecord( null ) ) );
+	});
+
+	it( 'getUTCTimeByDatabaseRecord', () =>
+	{
+		let vRecord	= new Date();
+		let sRecord	= DeUtilsTime.getISODateString( vRecord );
+
+		assert.equal( true, DeUtilsTime.getUTCTimeByDatabaseRecord( vRecord ) > 0 );
+		assert.equal( true, DeUtilsTime.getUTCTimeByDatabaseRecord( sRecord ) > 0 );
+		assert.equal( 0, DeUtilsTime.getUTCTimeByDatabaseRecord( `` ) );
+		assert.equal( 0, DeUtilsTime.getUTCTimeByDatabaseRecord( `ssss` ) );
+		assert.equal( 0, DeUtilsTime.getUTCTimeByDatabaseRecord( null ) );
+	});
+
+
 });

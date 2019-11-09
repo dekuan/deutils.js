@@ -30,6 +30,18 @@ describe( 'DeUtilsCore.test', () =>
 		assert.equal( true, DeUtilsCore.isExistingString( '11111112323' ) );
 		assert.equal( true, DeUtilsCore.isExistingString( 'xxx' ) );
 	});
+	it( 'isValidMId', () =>
+	{
+		assert.equal( false, DeUtilsCore.isValidMId( 1 ) );
+		assert.equal( false, DeUtilsCore.isValidMId( null ) );
+		assert.equal( false, DeUtilsCore.isValidMId( undefined ) );
+		assert.equal( false, DeUtilsCore.isValidMId( NaN ) );
+		assert.equal( false, DeUtilsCore.isValidMId( '' ) );
+		assert.equal( false, DeUtilsCore.isValidMId( '11111112323' ) );
+		assert.equal( false, DeUtilsCore.isValidMId( 'xxx' ) );
+		assert.equal( true, DeUtilsCore.isValidMId( '6cc5f5b8eb7f11e9b3fafe58bdad2bce' ) );
+		assert.equal( true, DeUtilsCore.isValidMId( '6cc5f5b8-eb7f-11e9-b3fa-fe58bdad2bce' ) );
+	});
 	it( 'isFunction', () =>
 	{
 		assert.equal( false, DeUtilsCore.isFunction( 1 ) );

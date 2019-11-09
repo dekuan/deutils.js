@@ -27,6 +27,17 @@ class DeUtilsCore
 		return this.isString( vValue ) && vValue.length > 0;
 	}
 
+	static isValidMId( vValue )
+	{
+		if ( ! this.isExistingString( vValue ) )
+		{
+			return false;
+		}
+
+		let nByteLength	= this.getByteLength( vValue );
+		return nByteLength >= 32 && nByteLength <= 36;
+	}
+
 	static isFunction( vValue )
 	{
 		return Boolean( vValue && 'function' === typeof vValue );
@@ -71,10 +82,21 @@ class DeUtilsCore
 			bRet	= true;
 			for ( sKey of vKeys )
 			{
-				if ( ! vValue.hasOwnProperty( sKey ) )
+				if ( 'function' === typeof vValue.hasOwnProperty )
 				{
-					bRet	= false;
-					break;
+					if ( ! vValue.hasOwnProperty( sKey ) )
+					{
+						bRet	= false;
+						break;
+					}
+				}
+				else
+				{
+					if ( undefined === vValue[ sKey ] )
+					{
+						bRet	= false;
+						break;
+					}
 				}
 			}
 		}

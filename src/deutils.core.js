@@ -27,6 +27,17 @@ class DeUtilsCore
 		return this.isString( vValue ) && vValue.length > 0;
 	}
 
+	static isValidMId( vValue )
+	{
+		if ( ! this.isExistingString( vValue ) )
+		{
+			return false;
+		}
+
+		let nByteLength	= this.getByteLength( vValue );
+		return nByteLength >= 32 && nByteLength <= 36;
+	}
+
 	static isFunction( vValue )
 	{
 		return Boolean( vValue && 'function' === typeof vValue );
